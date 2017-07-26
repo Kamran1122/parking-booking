@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {firebaseAuth,userRef} from '../../config/constants';
 import Loader from '../Loader';
 import User from './User';
+import Admin from './Admin';
 
 export default class Dashboard extends Component {
 	constructor(props){
@@ -45,8 +46,8 @@ export default class Dashboard extends Component {
       <div>
         {
         	this.state.admin===true ? 
-        	<h3>Admin</h3> :
-        	<h3>User</h3>
+        	<Admin /> :
+        	<User />
         }
       </div>
     )
