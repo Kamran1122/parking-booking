@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import {firebaseAuth,userRef} from '../../config/constants';
 import Loader from '../Loader';
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
+import AddParking from './AddParking';
+import ViewLocation from './ViewLocation';
+import User from './User';
 
-export default class User extends Component{
+export default class Admin extends Component{
 	constructor(props){
 		super(props);
 	}
@@ -25,7 +28,7 @@ export default class User extends Component{
 				                <i className="fa fa-times"></i>
 				            </span>
 				        </span>
-				        <Link to="/Dashboard/ParkLocation" >
+				        <Link to="/Dashboard/AddParking" >
 							<a href="#" className="list-group-item">
 				            	<i className="fa fa-comment-o"></i> Add a new Location
 				        	</a>
@@ -43,7 +46,11 @@ export default class User extends Component{
 				    </div>        
 				</div>
 				<div className="col-sm-6 col-md-4">
-					
+					<Switch>
+						<Route path="/Dashboard/AddParking" component={AddParking} />
+						<Route path="/Dashboard/ViewLocation" component={ViewLocation} />
+						<Route path="/Dashboard/ViewUsers" component={User} />
+					</Switch>
 				</div>
 			</div>
 		</div>
