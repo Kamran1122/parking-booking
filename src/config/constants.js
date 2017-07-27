@@ -13,3 +13,5 @@ import firebase from 'firebase'
 export const ref = firebase.database().ref();
 export const firebaseAuth = firebase.auth;
 export const userRef = firebase.database().ref('users');
+export const locationsRef = firebase.database().ref('location');
+export const insert = firebase.database();

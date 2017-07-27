@@ -5,6 +5,7 @@ import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
 import AddParking from './AddParking';
 import ViewLocation from './ViewLocation';
 import User from './User';
+import LocationDes from './LocationDes';
 
 export default class Admin extends Component{
 	constructor(props){
@@ -45,7 +46,7 @@ export default class Admin extends Component{
 				        </Link>
 				    </div>        
 				</div>
-				<div className="col-sm-6 col-md-4">
+				<div className="">
 					<Switch>
 						<Route path="/Dashboard/AddParking" component={AddParking} />
 						<Route path="/Dashboard/ViewLocation" component={ViewLocation} />

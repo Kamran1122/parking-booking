@@ -43,3 +43,14 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
+.back{
+  background-color: #eee;
+  border-radius: 6px;
+}
+.tableBack{
+  background: white;
+}
+.btn-line{
+  margin-right: 17px;
+  margin-bottom: 10px;
+}
