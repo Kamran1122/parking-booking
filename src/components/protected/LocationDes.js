@@ -6,7 +6,8 @@ export default class LocationDes extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			slotInfo: []
+			slotInfo: [],
+			slotForm: false
 		}
 	}
 	componentWillMount(){
@@ -16,27 +17,47 @@ export default class LocationDes extends Component{
 			var slotData = [];
 			snap.forEach(function(childSnap){
 				var childData = childSnap.val();
-				slotData.push(childData);
+				var key = {key: childSnap.key};
+				var data = Object.assign({},childData,key);
+				slotData.push(data);
 				that.setState({
 					slotInfo:slotData 
 				});
 			})
 		})
+		that.handleSlot=(value)=>{
+			var key = value;
+			that.setState({
+				slotForm:true 
+			});
+		}
 	}
+
 	render(){
+		const SlotForm =()=>{ 
+				return(
+				<form className="form-group">
+					<h3 className="text-center">Reserve your parking slot</h3>
+					<input type="date" ref="startDate" className="form-control" /><br/>
+					<input type="time" ref="startDate" className="form-control" /><br/>
+					<input type="submit" className="btn-default"/>
+				</form>
+				)
+		}
 		return(
 			<div className="col-md-12">
-				<h3 className="text-center">All available slots</h3>
+				<h3 className="text-center">All available Slots</h3>
 				{
 					this.state.slotInfo.map((index,key)=>
-						
-							<div className="col-md-2 btn-line">
-								<button key={key} className="btn btn-primary">Slot No: {index.no}</button>
-							</div>
-						
+						<div className="col-md-2 btn-line">
+							<button key={key} onClick={()=>this.handleSlot(index.key)} className="btn btn-primary">Slot No: {index.no}</button>
+						</div>
 					)
+				}<br/>
+				{
+					this.state.slotForm && 
+						<SlotForm />
 				}
-
 			</div>
 			)
 	}
