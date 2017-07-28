@@ -6,6 +6,7 @@ import AddParking from './AddParking';
 import ViewLocation from './ViewLocation';
 import User from './User';
 import LocationDes from './LocationDes';
+import ViewBookings from './ViewBookings';
 
 export default class Admin extends Component{
 	constructor(props){
@@ -39,6 +40,11 @@ export default class Admin extends Component{
 				            	<i className="fa fa-comment-o"></i> View all locations
 				        	</a>
 				        </Link>
+				        <Link to="/Dashboard/ViewBookings" >
+							<a href="#" className="list-group-item">
+				            	<i className="fa fa-comment-o"></i> View all Bookings
+				        	</a>
+				        </Link>
 				        <Link to="/Dashboard/ViewUsers" >
 							<a href="#" className="list-group-item">
 				            	<i className="fa fa-comment-o"></i> View all Users
@@ -50,6 +56,7 @@ export default class Admin extends Component{
 					<Switch>
 						<Route path="/Dashboard/AddParking" component={AddParking} />
 						<Route path="/Dashboard/ViewLocation" component={ViewLocation} />
+						<Route path="/Dashboard/ViewBookings" component={ViewBookings} />
 						<Route path="/Dashboard/ViewUsers" component={User} />
 					</Switch>
 				</div>

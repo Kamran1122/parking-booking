@@ -58,7 +58,6 @@ export default class ViewLocation extends Component{
 							<th>Action</th>
 						</tr>
 					</thead>
-					{console.log(index)}
 					<tbody>
 						<tr>
 							<td>{index.location}</td>
