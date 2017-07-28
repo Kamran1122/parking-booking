@@ -48,7 +48,8 @@ export default class LocationDes extends Component{
 					startDate: startDate,
 					startTime: startTime,
 					hours: hours,
-					no: that.state.slotNo						
+					no: that.state.slotNo,
+					location: that.props.location						
 				},function(error){
 					if (error) { alert('Something went wront please try again'); }
 					else{
@@ -56,6 +57,18 @@ export default class LocationDes extends Component{
 							slotForm:false 
 						});
 					}
+				}).then((snap)=>{
+					firebaseAuth().onAuthStateChanged((user)=>{
+						ref.child(`users/${user.uid}/bookings`)
+							.push({
+								booked: true,
+								startDate: startDate,
+								startTime: startTime,
+								hours: hours,
+								no: that.state.slotNo,
+								location: that.props.location
+							})
+					})
 				})
 		}
 		that.closeForm=()=>{

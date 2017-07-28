@@ -11,7 +11,8 @@ export default class ViewLocation extends Component{
 			locationInfo: [],
 			loaded: false,
 			LocationDes: false,
-			slots: null
+			slots: null,
+			location: null
 		}
 	}
 	componentWillMount(){
@@ -32,9 +33,13 @@ export default class ViewLocation extends Component{
 	}
 	componentDidMount(){
 		this.handleClick=(value)=>{
+			var data = value.split(',');
+			var key = data[0];
+			var location = data[1];
 			this.setState({
 				LocationDes:true,
-				key: value 
+				key: key,
+				location: location 
 			});
 		}
 	}
@@ -44,7 +49,7 @@ export default class ViewLocation extends Component{
 			<div>
 			<div className="col-md-offset-2 col-md-6 back">
 				{
-					this.state.LocationDes===true ? <LocationDes slotKey={this.state.key} /> :
+					this.state.LocationDes===true ? <LocationDes location={this.state.location} slotKey={this.state.key} /> :
 				<div>
 				<h3 className="text-center">All Locations</h3>
 				{
@@ -62,7 +67,7 @@ export default class ViewLocation extends Component{
 						<tr>
 							<td>{index.location}</td>
 							<td>{index.slotsCount}</td>
-							<td><button onClick={()=>this.handleClick(index.key)} className="btn-default">View</button></td>
+							<td><button onClick={()=>this.handleClick(index.key+','+index.location)} className="btn-default">View</button></td>
 						</tr>
 					</tbody>
 				</table>
