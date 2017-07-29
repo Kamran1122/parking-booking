@@ -1,28 +1,66 @@
 import React, { Component } from 'react';
 import Loader from '.././Loader';
-import {firebaseAuth,userRef,bookingRef} from '../../config/constants';
+import {firebaseAuth,userRef,insert} from '../../config/constants';
 
 export default class ViewBookings extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+    	bookingInfo: [],
+    	loaded: false
+    }
   }
   componentWillMount(){
 	var that = this;
 	firebaseAuth().onAuthStateChanged((user)=>{
 	  if (user) {
-	  	bookingRef.on('value',snap=>{
+	  	var bookingData = [];
+	  	insert.ref('users').on('value',snap=>{
 	  	  snap.forEach(function(childSnap){
-	  	  	console.log(childSnap.val());
+	  	  	insert.ref('users/'+childSnap.key+'/bookings').on('value',snap=>{
+	  	  		snap.forEach(function(subChild){
+	  	  			var subData = subChild.val();
+	  	  			bookingData.push(subData);
+	  	  			that.setState({
+	  	  				bookingInfo:bookingData,
+						loaded: true
+	  	  			});
+	  	  		})
+	  	  	})
 	  	  })
 	  	})
 	  }  
 	});
   }
   render() {
-    return (
-      
-      	<Loader />
-      
+    return this.state.loaded===false ? <Loader /> : (
+      <div className="col-md-offset-2 col-md-4 back">
+      	<h1 className="text-center" >All Bookings</h1>
+      	{
+      		this.state.bookingInfo.map((index,key)=>
+				<table className="table table-condensed tableBack" key={key}>
+					<thead>
+						<tr>
+							<th>Location</th>
+							<th>Slot No</th>
+							<th>Hours</th>
+							<th>Start Date</th>
+							<th>Start Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{index.location}</td>
+							<td>{index.no}</td>
+							<td>{index.hours}</td>
+							<td>{index.startDate}</td>
+							<td>{index.startTime}</td>
+						</tr>
+					</tbody>
+				</table>
+      		)	
+      	}
+      </div>
     );
   }
 }
