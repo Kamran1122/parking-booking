@@ -8,7 +8,7 @@ export function auth (email, pw,name) {
             email: user.email,
             uid: user.uid,
             name: name,
-            type: 'student'
+            type: 'user'
           })
     })
 }

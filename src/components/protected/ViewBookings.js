@@ -35,7 +35,7 @@ export default class ViewBookings extends Component {
   render() {
     return this.state.loaded===false ? <Loader /> : (
       <div className="col-md-offset-2 col-md-4 back">
-      	<h1 className="text-center" >All Bookings</h1>
+      	<h2 className="text-center" >All Bookings</h2>
       	{
       		this.state.bookingInfo.map((index,key)=>
 				<table className="table table-condensed tableBack" key={key}>
