@@ -16,3 +16,4 @@ export const userRef = firebase.database().ref('users');
 export const locationsRef = firebase.database().ref('location');
 export const insert = firebase.database();
 export const bookingRef = firebase.database().ref('users/bookings');
+export const feedbackRef = firebase.database().ref('feedback');

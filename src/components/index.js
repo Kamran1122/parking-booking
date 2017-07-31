@@ -59,7 +59,7 @@ export default class App extends Component {
     return this.state.loading === true ? <Loader /> : (
       <BrowserRouter>
         <div>
-          <nav className="navbar navbar-default navbar-static-top">
+          <nav className="navbar navbar-inverse navbar-static-top">
             <div className="container">
               <div className="navbar-header">
                 <Link to="/" className="navbar-brand">Real Time Parking Booking App</Link>

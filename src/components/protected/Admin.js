@@ -4,9 +4,10 @@ import Loader from '../Loader';
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom';
 import AddParking from './AddParking';
 import ViewLocation from './ViewLocation';
-import User from './User';
+import UserDetail from './UserDetail';
 import LocationDes from './LocationDes';
 import ViewBookings from './ViewBookings';
+import ViewFeedback from './ViewFeedback';
 
 export default class Admin extends Component{
 	constructor(props){
@@ -50,6 +51,11 @@ export default class Admin extends Component{
 				            	<i className="fa fa-comment-o"></i> View all Users
 				        	</a>
 				        </Link>
+				        <Link to="/Dashboard/ViewFeedback" >
+							<a href="#" className="list-group-item">
+				            	<i className="fa fa-comment-o"></i> User Feedback
+				        	</a>
+				        </Link>
 				    </div>        
 				</div>
 				<div className="">
@@ -57,7 +63,8 @@ export default class Admin extends Component{
 						<Route path="/Dashboard/AddParking" component={AddParking} />
 						<Route path="/Dashboard/ViewLocation" component={ViewLocation} />
 						<Route path="/Dashboard/ViewBookings" component={ViewBookings} />
-						<Route path="/Dashboard/ViewUsers" component={User} />
+						<Route path="/Dashboard/ViewUsers" component={UserDetail} />
+						<Route path="/Dashboard/ViewFeedback" component={ViewFeedback} />
 					</Switch>
 				</div>
 			</div>

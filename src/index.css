@@ -54,3 +54,28 @@ body {
   margin-right: 17px;
   margin-bottom: 10px;
 }
+.desBack{
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.main{
+  background-image: url("http://gothiatowers.com/wp-content/uploads/2015/09/Parkering-e1441957508415.jpg");
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  position: absolute;
+  margin: auto;
+  margin-top: -20px;
+  margin-left: -90px;
+}
+.back-image h1 {
+  font-family:fantasy;
+  font-size: 72px;
+  font-weight: 3em;
+  text-align: center;
+  line-height: 591px;
+  text-shadow: 4px 3px 0 #ffffff, 9px 8px 0 rgba(0,0,0,0.15);
+}
